@@ -32,13 +32,16 @@ async function getCurrentApartment(req, res) {
 
 async function craeteApartment(req, res) {
     try {
-        const { errors, isValid } = validatMyApartment(req.body);
 
-        // // Check Validation
-        if (!isValid) {
-            // Return any errors with 400 status
-            return res.status(400).json(errors);
-        }
+        ////whyyy!!!! i dont sent you strings!!!!
+
+        // const { errors, isValid } = validatMyApartment(req.body);
+
+        // // // Check Validation
+        // if (!isValid) {
+        //     // Return any errors with 400 status
+        //     return res.status(400).json(errors);
+        // }
 
         //chacking if the apartment is alrdy in the DB
         const apartmentExist = await Apartment.findOne({ address: req.body.address, apartmentNum: req.body.apartmentNum });
@@ -202,8 +205,8 @@ async function craeteApartment(req, res) {
                 return res.status(404).send({ message: 'Apartment not found' });
             //need to chack if userId allrady in the array but i have only his id and nothing about him to commper ........what to do....  
             else
-                //Add user id to array
-                openHome.invated.unshift({ user: req.params.userId });
+                //Add user id  to array- who is invited to hopen house
+                openHome.invated.unshift({ user: req.params.userId }); 
             openHome.save()
 
             ///set a requst to user whos invaited:    

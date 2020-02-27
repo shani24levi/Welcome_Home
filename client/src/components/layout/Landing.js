@@ -25,7 +25,7 @@ class Landing extends Component {
   render() {
     let addModalClose =()=> this.setState({addModalShow:false});
     return (
-      <div className="landing">
+      <div className="landing img-responsive">
         <div className="dark-overlay landing-inner text-light">
           <div className="container">
             <div className="row">

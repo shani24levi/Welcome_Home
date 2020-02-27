@@ -24,7 +24,7 @@ async function loginUser(req, res) {
         const password = req.body.password;
       
         // Find user by email
-        User.findOne({ email }).then(user => {
+        const user = User.findOne({ email }).then(user => {
           // Check for user
           if (!user) {
             errors.email = 'User not found';
@@ -45,7 +45,7 @@ async function loginUser(req, res) {
                 { expiresIn: 3600 },
                 (err, token) => {
                   res.json({
-                    success: true,
+                    success: user,
                     token: 'Bearer ' + token
                   });
                 }

@@ -5,8 +5,9 @@ module.exports = function validatMyApartment(data) {
   let errors = {};
 
   data.parcking = !isEmpty(data.parcking) ? data.parcking : '';
-  data.saftyChack = !isEmpty(data.saftyChack) ? data.saftyChack : '';
   data.desciption = !isEmpty(data.desciption) ? data.desciption : '';
+  data.mainImg = !isEmpty(data.mainImg) ? data.mainImg : '';
+
 
   // if (Validator.isEmpty(data.city)) {
   //   errors.city = 'city field is required';

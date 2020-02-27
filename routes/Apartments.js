@@ -24,8 +24,14 @@ apartments.post('/invated/:apartmentId/:userId',vertify, (req,res)=>{
     control.invated(req,res);
 });
 
+
+// apartments.get('/comming/:aprtmentId',vertify, (req,res)=>{ 
+//     control.getAllComming(req,res);
+// });
+
+
 //any users can chang 'usersComing filde'
-apartments.get('/comingOpen/:apartmentId',vertify, (req,res)=>{ 
+apartments.get('/comming/:apartmentId',vertify, (req,res)=>{ 
     control.comming(req,res);
 });
 

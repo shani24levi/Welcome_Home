@@ -1,10 +1,9 @@
 const express = require('express');
+const fileUpload = require('express-fileupload');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
-
-//save
 const morgan = require('morgan');
 
 const dotenv = require('dotenv');
@@ -15,6 +14,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
+app.use(fileUpload());
 
 
 //Conect to DB

@@ -38,6 +38,9 @@ import AddApartmentShow from './components/add-credentials/AddApartmentShow';
 import ApartmentView from './components/apartment/ApartmentView';
 import CreateRequst from './components/create-componnets/CreateRequst';
 
+
+import FilleUpload from './components/fileUplode/FilleUpload';
+
 import './App.css';
 
 // Check for token
@@ -129,6 +132,10 @@ class App extends Component {
 
               <Switch>
                 <PrivateRoute exact path="/add-requst" component={CreateRequst} />
+              </Switch>
+
+              <Switch>
+                <PrivateRoute exact path="/uplod" component={FilleUpload} />
               </Switch>
               
 

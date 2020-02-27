@@ -5,20 +5,28 @@ const passport = require('passport');
 const vertify =  passport.authenticate('jwt', { session: false });
 const control = require('../controllers/Apartments')
 
-//for uplode imeges
-// const multer =require('multer');
-// const uplode = multer({dest: 'uplode/'})
-
 
 apartments.get('/',vertify , (req, res) => {
     control.getCurrentApartment(req,res);
   }
 );
 
-// apartments.post('/uplodeImg', uplode.single('img') , (req, res) => {
-//     console.log(req.file);
-//   }
-// );
+apartments.post('/upload', (req, res) => {
+    if (req.files === null) {
+      return res.status(400).json({ msg: 'No file uploaded' });
+    }
+  
+    const file = req.files.file;
+  
+    file.mv(`${__dirname}/client/public/uploads/${file.name}`, err => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send(err);
+      }
+  
+      res.json({ fileName: file.name, filePath: `/uploads/${file.name}` });
+    });
+  });
 
 apartments.post('/',vertify, (req,res)=> { 
     control.craeteApartment(req,res);

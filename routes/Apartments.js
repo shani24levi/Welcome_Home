@@ -5,10 +5,20 @@ const passport = require('passport');
 const vertify =  passport.authenticate('jwt', { session: false });
 const control = require('../controllers/Apartments')
 
-apartments.get('/', vertify , (req, res) => {
+//for uplode imeges
+// const multer =require('multer');
+// const uplode = multer({dest: 'uplode/'})
+
+
+apartments.get('/',vertify , (req, res) => {
     control.getCurrentApartment(req,res);
   }
 );
+
+// apartments.post('/uplodeImg', uplode.single('img') , (req, res) => {
+//     console.log(req.file);
+//   }
+// );
 
 apartments.post('/',vertify, (req,res)=> { 
     control.craeteApartment(req,res);

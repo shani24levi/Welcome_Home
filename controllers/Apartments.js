@@ -7,6 +7,10 @@ const Profile = require('../models/Profile');
 
 const validatMyApartment = require('../validation/apartment');
 
+//for uplode imeges
+const multer =require('multer');
+const uplode = multer({dest: 'uplode/'})
+
 
 async function getCurrentApartment(req, res) {
     try {
@@ -32,6 +36,7 @@ async function getCurrentApartment(req, res) {
 
 async function craeteApartment(req, res) {
     try {
+
 
         ////whyyy!!!! i dont sent you strings!!!!
 
@@ -67,6 +72,7 @@ async function craeteApartment(req, res) {
             loftSize: req.body.loftSize,
             lat: req.body.lat,
             lng: req.body.lng,
+            mainImg: req.body.mainImg, 
             created: today,
             openHouse: {
                 open: req.body.openHouse_open

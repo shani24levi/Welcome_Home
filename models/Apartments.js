@@ -24,7 +24,7 @@ const ApartmentSchema = new Schema({
     parcking: {type:String},
     neebrhood: {type:String }, 
     saftyChack: {type:Number},
-    mainImg: { type:String},
+    mainImg: { type:String , default: ''},
     picturs: [{
          img: {type:String},
          title: {type:String},

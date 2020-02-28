@@ -90,7 +90,7 @@ class Dashboard extends Component {
         :
         //if user is owner so show his apartments: 
         <div className="apartment-owner-show">
-          <ApartmentsOwner /> 
+          { !loading && <ApartmentsOwner /> }
 
           <Link to='/add-apartment'>
             <input

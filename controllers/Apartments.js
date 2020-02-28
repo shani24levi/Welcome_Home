@@ -16,7 +16,7 @@ async function getCurrentApartment(req, res) {
     try {
         const errors = {};
 
-        Apartment.findOne({ owner: req.user.id })
+        Apartment.findById({ _id: req.params.id })
           .populate('owner', ['first_name', 'last_name', 'avatar', 'role'])
           .then(apaetment => {
             if (!apaetment) {
@@ -122,10 +122,7 @@ async function craeteApartment(req, res) {
                     message: 'Aartments not found',
                 })
 
-            else return res.status(200).send({
-                message: 'Aartments found sucssfuly',
-                apartments: apartments
-            }).populate('usersCamming user usersCamming.user', 'first_name last_name email')
+            else return res.status(200).json(apartments).populate('usersCamming user usersCamming.user', 'first_name last_name email')
         } catch (err) {
             console.error('some error occurred', err)
             res.status(500).send(err.message);
@@ -317,10 +314,7 @@ async function craeteApartment(req, res) {
                     message: 'Aartments not found',
                 })
 
-            else return res.status(200).send({
-                message: 'Aartments found sucssfuly',
-                apartments: apartments
-            }).populate('usersCamming user usersCamming.user', 'first_name last_name email')
+            else return res.status(200).json(apartments).populate('usersCamming user usersCamming.user', 'first_name last_name email')
         } catch (err) {
             console.error('some error occurred', err)
             res.status(500).send(err.message);

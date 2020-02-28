@@ -16,10 +16,10 @@ import {
 } from './types';
 
 // Get current apartment
-export const getCurrentApartment = () => dispatch => {
+export const getCurrentApartment = id => dispatch => {
   dispatch(setRequsteLoading());
   axios
-    .get('/api/apartments')
+    .get(`/api/apartments/${id}`)
     .then(res =>
       dispatch({
         type: GET_APARTMENT,

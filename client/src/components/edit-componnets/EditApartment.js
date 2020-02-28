@@ -46,12 +46,7 @@ class EditApartment extends Component {
 
 
   componentDidMount() {
-    // console.log('this.props.searchForm',this.props.apartment.state)
-    // if (this.props.searchForm) {
-    //   // load by search
-    //   this.props.editApartment(this.props.searchForm) //id?
-    // }
-    this.props.getCurrentApartment();
+    this.props.getCurrentApartment(this.props.match.params.id);
   }
 
 
@@ -216,6 +211,7 @@ class EditApartment extends Component {
 
     return (
       <div className="edit-apartment">
+        
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">

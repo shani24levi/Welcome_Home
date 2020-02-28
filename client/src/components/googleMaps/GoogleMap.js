@@ -11,6 +11,8 @@ const mapStyles = {
   height: '100%'
 };
 
+
+
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
@@ -75,7 +77,8 @@ export class MapContainer extends Component {
 
               if (!app.lat || !app.lng) return null;
 
-              return (<Marker
+              return (<Marker  
+                className="marker"
                 name={app._id}
                 position={{ lat: app.lat, lng: app.lng }}
                 onClick={this.onMarkerClick}

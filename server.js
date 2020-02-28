@@ -27,7 +27,7 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 //Routs Middlewares
-const Users = require('./routes/Users');
+const Users = require('./routes/users');
 const Apartments = require('./routes/Apartments');
 const Requests = require('./routes/Requests');
 const Posts = require('./routes/Posts');

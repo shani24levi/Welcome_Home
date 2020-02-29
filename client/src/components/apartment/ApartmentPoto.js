@@ -5,19 +5,15 @@ import GridListTile from '@material-ui/core/GridListTile';
 import React, { Component } from 'react';
 import isEmpty from '../../validation/is-empty';
 import { getApartentsByApartmentId  } from '../../actions/apartmentsActions';
-
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 //gellury from mautiral ui
 class ApartmentPotos extends Component {
-    componentDidMount() {
-        if (this.props.viewClike) { //from Link in : ./googleMap/Apartment.js
-            this.props.getApartentsByApartmentId(viewClike._id)  //apartment id thet cliked 
-          }
-      }
+    // componentDidMount() {
+    //   this.props.getPostsByApartmentId(this.props.apartment._id);
+    //   }
 
-    // onContactClick(id) {
-    //     this.props.sentRequst(id);
-    // }
 
   render() {
     const { apartment } = this.props;
@@ -70,8 +66,7 @@ ApartmentPotos.propTypes = {
     errors: state.errors
   });
   
-  export default connect(mapStateToProps, { getApartentsByApartmentId, getCurrentApartment })(
-    withRouter(ApartmentPotos)
+  export default connect(mapStateToProps, { getApartentsByApartmentId })((ApartmentPotos)
   );
 
 

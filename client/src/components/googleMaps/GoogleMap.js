@@ -78,7 +78,6 @@ export class MapContainer extends Component {
               if (!app.lat || !app.lng) return null;
 
               return (<Marker  
-                className="marker"
                 name={app._id}
                 position={{ lat: app.lat, lng: app.lng }}
                 onClick={this.onMarkerClick}

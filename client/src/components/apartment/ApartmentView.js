@@ -3,50 +3,35 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Spinner from '../common/Spinner';
 import isEmpty from '../../validation/is-empty';
-import ApartmentPotos from './ApartmentPosts';
+import ApartmentPoto from './ApartmentPoto';
 import ApartmentDetails from './ApartmentDetails';
 import ApartmentPosts from './ApartmentPosts';
 import { Link } from 'react-router-dom';
+import { getApartentsByApartmentId } from '../../actions/apartmentsActions';
 
 
 
 class ApartmentView extends Component {
-  //   componentDidMount() {
-  //     const { apartment } = this.props.apartment.apartments; 
-  //     this.props.getApartentsByApartmentId (apartment._id);
-  //   }
+    componentDidMount() {
+       this.props.getApartentsByApartmentId(this.props.match.params.apartment_id);
+    }
 
 
   render() {
 
-    console.log('ApartmentView', this.props);
-    const apartment = this.props.location.state;
+    const { apartment , loading} =  this.props.apartment || [];
+    let item;
 
-
-
-
-    let apartmentItems;
-
-    // if (apartment === null || loading) {
-    //   apartmentItems = <Spinner />;
-    // } else {
-    //   if (apartment.length > 0) {
-
-
-    //     //puicters is an array thes why i using map
-    //     apartmentItems = apartment.map(apartment => (
-    //       <ApartmentPotos key={apartment._id} apartment={apartment} viewClike={viewClike} />
-    //     ));
-    //   } else {
-    //     apartmentItems = <h4>Apartment Not found...</h4>;
-    //   }
-    // }
-    if (!apartment) return 'no appartment';
-    return (
-      <div className="apartmentView">
-        {/* left side -potos */}
+    if (loading || apartment === null) {
+       item = <Spinner />;
+    } else if( apartment.message){
+        item = <h4>Apartment Not found...</h4>;
+    } else{
+      item = (        
+      <>
+          { /* left side -potos */}
         <div className="galluryView">
-          {apartmentItems}
+          {/* <ApartmentPoto  apartment={apartment} /> */}
         </div>
 
         {/* right side  */}
@@ -67,14 +52,21 @@ class ApartmentView extends Component {
 
           </div>
         </div>
+      </>
+    );      
+  }
+    
+    //  if (!apartment) return 'no appartment';
+    return (
+      <div className="apartmentView">
+        {item}
       </div>
-
-
     );
   }
 }
 
 ApartmentView.propTypes = {
+  getApartentsByApartmentId:PropTypes.func.isRequired,
   apartment: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -84,7 +76,7 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps)((ApartmentView));
+export default connect(mapStateToProps, {getApartentsByApartmentId})((ApartmentView));
 
 
 

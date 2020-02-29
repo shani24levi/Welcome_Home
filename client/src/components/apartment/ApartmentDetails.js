@@ -117,7 +117,7 @@ function ApartmentDetails(props) {
                         {apartment.disciption}
             </Typography>
                     <Typography paragraph>
-                        {apartment.address}
+                        {apartment.disciption}
                     </Typography>
                     <Typography paragraph>
                         { apartment.disciption}

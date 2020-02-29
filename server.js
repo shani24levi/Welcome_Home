@@ -40,7 +40,6 @@ app.use('/api/posts', Posts);
 
 // Server static assets if in production
 if (process.env.NODE_ENV === 'production') {
-  console.log('43634643')
   // Set static folder
   app.use(express.static(path.resolve(__dirname, './client', 'build')));
 

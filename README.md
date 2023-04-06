@@ -1,4 +1,4 @@
-## Welcome Home application Challenge - About the App
+## Welcome Home Challenge - About the App
 > “*2nd hand mockup site, search, advertisement, finding apartments for rent.
 As part of the MERN course at Shenkar College*”.
 
@@ -47,7 +47,7 @@ You can register as an apartment seeker or as an apartment advertiser
 ## Steps to run the App on local machine
 ```shell
 # Clone the repository
-git clone https://github.com/5hraddha/100daysoflovechallenge.git
+git clone https://github.com/shani24levi/Welcome_Home.git
 
 # Install packages needed to run backend code
 npm install

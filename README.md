@@ -1,4 +1,4 @@
-## 100 days of Love Challenge - About the App
+## Welcome Home application Challenge - About the App
 > “*2nd hand mockup site, search, advertisement, finding apartments for rent.
 As part of the MERN course at Shenkar College*”.
 

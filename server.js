@@ -17,9 +17,9 @@ app.use(morgan('dev'));
 app.use(fileUpload());
 
 
-//Conect to DB
-const dbConect = require('./dbConect');
-dbConect();
+//Connect to DB
+const dbConnect = require('./config/dbConnect');
+dbConnect();
 
 
 // Passport middleware
@@ -27,11 +27,11 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 //Routs Middlewares
-const Users = require('./routes/users');
-const Apartments = require('./routes/Apartments');
-const Requests = require('./routes/Requests');
-const Posts = require('./routes/posts');
-const Profile =require('./routes/profile');
+const Users = require('./api/users/usersRoutes');
+const Apartments = require('./api/apartments/apartmentsRoute');
+const Requests = require('./api/requests/requestsRoute');
+const Posts = require('./api/posts/postsRoute');
+const Profile = require('./api/profile/profileRoute');
 app.use('/api/users', Users);
 app.use('/api/profile', Profile);
 app.use('/api/apartments', Apartments);
@@ -40,15 +40,11 @@ app.use('/api/posts', Posts);
 
 // Server static assets if in production
 if (process.env.NODE_ENV === 'production') {
-  // Set static folder
   app.use(express.static(path.resolve(__dirname, './client', 'build')));
-
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
 
 const port = process.env.PORT || 5000;
-
-//Listening on port 
 app.listen(port, () => console.log(`Server running on port ${port}`));
